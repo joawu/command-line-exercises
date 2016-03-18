@@ -237,6 +237,45 @@ A: `-O` = remote-output = write output to a file named as the remote file, `-L` 
 # 4: Directories
 
 ## 4.1 Directory Structure
-Home directory is abbreviated as `~` therefore /Users/Joanne/ruby/projects is the same as ~/ruby/projects
 
-### Exercise 3
+# Exercise 1
+Q: Write in words how you might speak the directory ~/foo/bar.
+
+A: root slash foo slash bar
+
+# Exercise 2
+Q: In /Users/bill/sonnets, what is the home directory? What is the username? Which directory is deepest in the hierarchy?
+
+A: home directory = users, username = bill, deepest diresctory = username
+
+# Exercise 3
+Q: For a user with username bill, how do /Users/bill/sonnets and ~/sonnets differ (if at all)?
+
+A: `~/sonnets` belongs to the superuser/root, `/Users/bill/sonnets` belongs to a user named bill
+
+## 4.2 Making directories
+**mkdir** makes directory
+**cd** change directory
+**cd .. ** move up a directory
+**pwd** print working directory
+**ls** list contents
+**rmdir** remove directories
+**sudo rm -rf <directory name>** -rf removes nonempty directory, add sudo if user does not have capability
+
+Ex. mkdir text_files
+mv *.txt text_files (moves all txt files into text_files directory)
+
+# Exercise 1
+Q: What is the option for making intermediate directories as required, so that you can create, e.g., ~/foo and ~/foo/bar with a single command? Hint: Refer to the man page for mkdir.
+A: `-p`
+
+# Exercise 2
+Q: Use the option from the previous exercise to make the directory foo and, within it, the directory bar (i.e., ~/foo/bar) with a single command.
+A: `mkdir -p ~/foo/bar`
+
+## 4.2 Navigating directories
+Say you're in users/Joanne and you have two directories: text_files and second_directory. While in text_files you can directly nav to second_directory by implementing `cd ~/second_directory`
+
+`cd - ` brings you to last directory you were in
+
+`open . <file name>` opens file in its default viewer ex. open foo.pdf opens it up with its nat
