@@ -205,11 +205,38 @@ Q: By piping the output of grep to head, print out the first (and only the first
 A: `grep rose sonnets.txt | head -1`
 
 ### Exercise 4
-Q: In Listing 18, we saw two additional lines that case-insensitively matched “rose”. Execute a command confirming that both of the lines contain the string “Rose” (and not, e.g., “rOSe”). Hint: Use a case-sensitive grep for “Rose”.
+Q: In Listing 18, we saw two additional lines that case-insensitively matched “rose”. Execute a command confirming that both of the lines contain the string “Rose” (and not, e.g., “rOSe”). 
 
 A: `grep Rose sonnets.txt | wc`
 
 ### Exercise 5
-Q: You should find in the previous exercise that there are three lines matching “Rose” instead of the two you might have expected from Listing 18. This is because there is one line that contains both “Rose” and “rose”, and thus shows up in both grep rose and grep -i rose. Write a command confirming that the number of lines matching “Rose” but not matching “rose” is equal to the expected 2. Hint: Pipe the result of grep to grep -v, and then pipe that result to wc. (What does -v do? Read the man page for grep (Box 5).)
+Q: You should find in the previous exercise that there are three lines matching “Rose” instead of the two you might have expected from Listing 18. This is because there is one line that contains both “Rose” and “rose”, and thus shows up in both grep rose and grep -i rose. Write a command confirming that the number of lines matching “Rose” but not matching “rose” is equal to the expected 2.
 
 A: `grep Rose sonnets.txt | grep -v rose | wc` grep Rose sonnets selects all the lines with "Rose". We then pipe this output through grep -v rose, which REMOVES the lines that also have "rose". We then pipe this output to wc to determine the number of lines (2).
+
+---
+## Summary
+
+### Exercise 1
+Q: The history command prints the history of commands in a particular terminal shell (subject to some limit, which is typically large). Pipe history to less to examine your command history. What was your 17th command?
+A: `history | less`
+
+### Exercise 2
+Q: By piping the output of history to wc, count how many commands you’ve executed so far.
+A: `history | wc`
+
+### Exercise 3
+Q: One use of history is to grep your commands to find useful ones you’ve used before, with each command preceded by the corresponding number in the command history. By piping the output of history to grep, determine the number for the last occurrence of curl.
+A: `history | grep curl -n`
+
+### Exercise 3
+Q: What do the O and L options in Listing 8 mean?
+A: `-O` = remote-output = write output to a file named as the remote file, `-L` = location/follows redirects
+
+---
+# 4: Directories
+
+## 4.1 Directory Structure
+Home directory is abbreviated as `~` therefore /Users/Joanne/ruby/projects is the same as ~/ruby/projects
+
+### Exercise 3
