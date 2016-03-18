@@ -2,6 +2,50 @@
 
 <a href="https://www.learnenough.com/command-line-tutorial">Learn Enough Command Line to be Dangerous Tutorial</a> - Exercise Answers
 
+# Preliminary Stuff
+
+**command + T** new tab
+
+**ctrl - C** gets you out of trouble! *note: ctrl is often written as '^'
+
+**man <command>** provides documentation - press down to advance, q to quit
+
+
+
+**ctrl - A** takes you to beginning of line
+
+**ctrl - E** takes you to the end of line
+
+**ctrl - U** clears line
+
+**option-click** takes you to location of clicking
+
+**ctrl - L** or **clear** clears your screen
+
+
+
+**ls** lists files
+
+**ls *.txt** lists all txt files
+
+**ls -l** lists in long format
+
+**ls -rtl** lists by reversed time of modification
+
+**ls a*** lists all files that begin with the letter 'a'
+
+**ls *saucy*** lists all files that contain the string 'saucy'
+
+
+
+**mv** <old> <new>, move
+
+**cp** <old> <new>, copy
+
+**rm** <file>, removes
+
+**rm -f** <file>, removes WITHOUT confirmation
+
 # 2: Manipulating files
 ## 2.1: Redirecting and appending
 
@@ -102,4 +146,23 @@ A:`ls -lh sonnets.txt`
 Q: Suppose you wanted to list the files and directories using human-readable byte counts, all, by reverse time-sorted long-form. 
 
 A: `ls -hartl` 
+
+---
+## 3.2 Making Heads and Tails of it all
+
+### Exercise 1
+Q: By piping the results of tail sonnets.txt through wc, confirm that (like head) the tail command outputs 10 lines by default.
+
+A: `tail sonnets.txt | wc`
+
+### Exercise 2
+Q: By running man head, learn how to look at the first n lines of the file. By experimenting with different values of n, find a head command to print out just enough lines to display the first sonnet in its entirety (Figure 12).
+
+A: `head -18 sonnets.txt`
+
+### Exercise 3
+Q: Pipe the results of the previous exercise through tail (with the appropriate options) to print out only the 14 lines composing Sonnet 1. 
+
+A: `head -18 sonnets.txt | tail -14`
+
 
