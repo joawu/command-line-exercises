@@ -1,6 +1,6 @@
 # command-line-exercises
 
-<a href="https://www.learnenough.com/command-line-tutorial">Learn Enough Command Line to be Dangerous Tutorial</a> - Exercise Answers
+[Learn Enough Command Line to be Dangerous Tutorial](https://www.learnenough.com/command-line-tutorial) - Exercise Answers
 
 # Preliminary Stuff
 
@@ -165,4 +165,51 @@ Q: Pipe the results of the previous exercise through tail (with the appropriate 
 
 A: `head -18 sonnets.txt | tail -14`
 
+---
+## 3.3 Less is More
 
+### Exercise 1
+Q: Run less on sonnets.txt. Go down three pages and then back up three pages. Go to the end of the file, then to the beginning, then quit.
+
+A: `less sonnets.txt` advance with `^F` or `spacebar`, go back with `^B`, go to end with `G`, go to beginning with `1G`, quit with `q` 
+
+### Exercise 2
+Q: Search for the string “All” (case-sensitive). Go forward a few occurrences, then back a few occurrences. Then go to the beginning of the file and count the occurrences by searching forward until you hit the end. Compare your count to the result of running grep All sonnets.txt | wc. (We’ll learn about grep in Section 3.4.)
+
+A: `less sonnets.txt` wait, then search for `\All` advance with `n` go back with `N`, go back to beginning with `G`, and advance `n` to count 10 instances of "All". Compare with `grep All sonnets.txt | wc` which also yields 10 instances of "All". Hooray!
+
+### Exercise 3
+Q: Using less and / (“slash”), find the sonnet that begins with the line “Let me not”. Are there any other occurrences of this string in the Sonnets? 
+
+A: `less sonnets.txt` wait, then enter `\Let me not`. Pressing `n` to advance results in "Pattern not found" thereby indicating that there are no other occurances of the string "Let me not" in the sonnet.
+
+### Exercise 4
+Q: Because man uses less, we are now in a position to search man pages interactively. By searching for the string “sort” in the man page for ls, discover the option to sort files by size. What is the command to display the long form of files sorted so the largest files appear at the bottom? Hint: Use ls -rtl as a model.
+
+---
+## 3.4 Greping
+
+### Exercise 1
+Q: By searching man grep for “line number”, construct a command to find the line numbers in sonnets.txt where the string “rose” appears.
+
+A: `grep -n rose sonnets.txt`
+
+### Exercise 2
+Q: You should find that the last occurrences of “rose” is (via “roses”) on line 2203. Figure out how to go directly to this line when running less sonnets.txt. Hint: Recall from Table 4 that 1G goes to the top of the file, i.e., line 1. Similarly, 17G goes to line 17. Etc.
+
+A: `less sonnets.txt` wait, then enter `2203G`
+
+### Exercise 3
+Q: By piping the output of grep to head, print out the first (and only the first) line in sonnets.txt containing “rose”. Hint: Use the result of the second exercise in Section 3.2.2.
+
+A: `grep rose sonnets.txt | head -1`
+
+### Exercise 4
+Q: In Listing 18, we saw two additional lines that case-insensitively matched “rose”. Execute a command confirming that both of the lines contain the string “Rose” (and not, e.g., “rOSe”). Hint: Use a case-sensitive grep for “Rose”.
+
+A: `grep Rose sonnets.txt | wc`
+
+### Exercise 5
+Q: You should find in the previous exercise that there are three lines matching “Rose” instead of the two you might have expected from Listing 18. This is because there is one line that contains both “Rose” and “rose”, and thus shows up in both grep rose and grep -i rose. Write a command confirming that the number of lines matching “Rose” but not matching “rose” is equal to the expected 2. Hint: Pipe the result of grep to grep -v, and then pipe that result to wc. (What does -v do? Read the man page for grep (Box 5).)
+
+A: `grep Rose sonnets.txt | grep -v rose | wc` grep Rose sonnets selects all the lines with "Rose". We then pipe this output through grep -v rose, which REMOVES the lines that also have "rose". We then pipe this output to wc to determine the number of lines (2).
